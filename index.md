@@ -2,7 +2,9 @@
 
 ## Ph.D. student in the Text and Technology program at the University of Central Florida
 
-I am drawn to the intersection of text and technology, seeking to excel in the dynamic realm where linguistic expression converges with cutting-edge technological advancements. Pursuing a Text and Technology Ph.D. would provide me with the academic framework to explore and contribute to the evolving language landscape in the digital age, examining the intricate interplay between textual communication and technological innovation.
+I am drawn to the intersection of text and technology, seeking to excel in the dynamic realm where linguistic expression converges with cutting-edge technological advancements. Pursuing a Text and Technology Ph.D. would provide me with the academic framework to explore and contribute to the evolving language landscape in the digital age, examining the intricate interplay between textual communication, technological innovation, society and governance.
+
+![assets](image.png)
 
 ### Education:
 
@@ -28,4 +30,12 @@ Dean’s List Summer & Fall 2019
 
 University of North Florida
 1 UNF Drive, Jacksonville, Florida 32224
+
+My Contacts
+
+ mi347977@UCF.edu
+
+Follow Me
+
+ https://github/mi347977
 
