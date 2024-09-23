@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Story Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px;
+            line-height: 1.6;
+        }
+        button {
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .story {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Random Story Generator</h1>
+<p>Click the button below to generate a random story using a Markov chain approach.</p>
+<button onclick="generateStory()">Generate Story</button>
+
+<div class="story" id="story"></div>
+
+<script>
+    // Seed data from the combined text
+    const seedText = `
+        The scene shifted to an ancient grove, where the water-loving poplars stood tall. 
+        Water-loving poplars planted in a circle all round it, and the clear cold water came down to it from a rock high up, 
+        while above the fountain there was an altar to the nymphs, at which all wayfarers used to sacrifice. 
+        A dark figure, shrouded in mystery, whispered: "Women are frail!" So saying, he pushed him towards his attendants, 
+        who, roused by the old woman, had come in search of him.
+        Pinocchio, ever the philosophical mariner, chimed in, "Mine is an opinion, and opinions should be respected."
+    `;
+
+    // Function to build a Markov chain model
+    function buildMarkovChain(text) {
+        const words = text.split(/\s+/);
+        const markovChain = {};
+
+        for (let i = 0; i < words.length - 1; i++) {
+            const word = words[i].replace(/[.,!?]/g, '').toLowerCase();
+            const nextWord = words[i + 1].replace(/[.,!?]/g, '').toLowerCase();
+
+            if (!markovChain[word]) {
+                markovChain[word] = [];
+            }
+            markovChain[word].push(nextWord);
+        }
+        return markovChain;
+    }
+
+    // Function to generate a random story from the Markov chain
+    function generateStory() {
+        const markovChain = buildMarkovChain(seedText);
+        const words = Object.keys(markovChain);
+        let word = words[Math.floor(Math.random() * words.length)];
+        let story = [word.charAt(0).toUpperCase() + word.slice(1)];
+
+        // Generate a story of 50 words
+        for (let i = 0; i < 50; i++) {
+            const nextWords = markovChain[word];
+            if (!nextWords || nextWords.length === 0) break;
+            word = nextWords[Math.floor(Math.random() * nextWords.length)];
+            story.push(word);
+        }
+
+        document.getElementById('story').innerText = story.join(' ') + '.';
+    }
+</script>
+
+</body>
+</html>
